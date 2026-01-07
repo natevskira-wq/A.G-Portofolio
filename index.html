@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UPDATED NAME -->
+    <title>Abd-Alrahman Gamal | EdTech Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Inter/Merriweather for English, Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', 
+                            primary: '#059669', // Emerald Green
+                            light: '#f8fafc', 
+                            accent: '#2563eb' 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .project-card { transition: all 0.3s ease; }
+        .project-card:hover { transform: translateY(-5px); }
+        
+        /* Language Transition */
+        body { transition: font-family 0.3s ease; }
+    </style>
+</head>
+<body class="bg-brand-light text-slate-800 antialiased font-sans selection:bg-brand-primary selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-slate-900 tracking-tighter flex items-center gap-2">
+                <i data-lucide="code-2" class="text-brand-primary"></i>
+                <!-- Techy Handle Style for the Logo -->
+                <span id="nav-brand">Abd-Alrahman<span class="text-brand-primary">.Gamal</span></span>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600 rtl:space-x-reverse">
+                    <a href="#featured" id="nav-work" class="hover:text-brand-primary transition">Signature Work</a>
+                    <a href="#arcade" id="nav-arcade" class="hover:text-brand-primary transition">The Arcade</a>
+                    <a href="#about" id="nav-about" class="hover:text-brand-primary transition">About & CV</a>
+                </div>
+
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 border border-slate-300 rounded-full px-3 py-1 text-xs font-bold hover:bg-slate-100 transition">
+                    <i data-lucide="languages" size="14"></i>
+                    <span id="lang-btn-text">العربية</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 p-4 space-y-4 shadow-lg text-center">
+            <a href="#featured" id="mob-work" class="block text-slate-600 font-medium">Signature Work</a>
+            <a href="#arcade" id="mob-arcade" class="block text-slate-600 font-medium">The Arcade</a>
+            <a href="#about" id="mob-about" class="block text-slate-600 font-medium">About</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="pt-40 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-2/3">
+            <div id="hero-badge" class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-bold mb-6 uppercase tracking-wide border border-emerald-100">
+                <i data-lucide="graduation-cap" size="14"></i> Teacher & Fullstack Developer
+            </div>
+            
+            <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight text-slate-900 mb-6">
+                Bridging Pedagogy <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">
+                    & Technology.
+                </span>
+            </h1>
+            
+            <p id="hero-desc" class="text-xl text-slate-600 leading-relaxed max-w-2xl mb-8 font-serif rtl:font-arabic">
+                I build gamified learning platforms, interactive stories, and educational tools that solve real classroom problems. 
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="#featured" id="hero-btn-1" class="bg-slate-900 text-white px-8 py-3.5 rounded-lg font-bold hover:bg-slate-800 transition shadow-lg flex items-center gap-2">
+                    View Portfolio <i data-lucide="arrow-down" size="18"></i>
+                </a>
+                <a href="resume.pdf" target="_blank" id="hero-btn-2" class="bg-white text-slate-900 border border-slate-300 px-8 py-3.5 rounded-lg font-bold hover:bg-slate-50 transition flex items-center gap-2">
+                    <i data-lucide="file-text" size="18"></i> View CV
+                </a>
+            </div>
+        </div>
+        
+        <!-- Graphic -->
+        <div class="md:w-1/3 flex justify-center">
+            <div class="relative w-64 h-64 bg-gradient-to-tr from-emerald-100 to-blue-100 rounded-full blur-3xl opacity-70"></div>
+            <div class="absolute z-10 text-slate-900 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 -rotate-3 hover:rotate-0 transition duration-500">
+                <div class="flex items-center gap-3 mb-2 rtl:flex-row-reverse">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <code class="text-sm font-mono text-slate-600">
+                    <span class="text-purple-600">const</span> <span class="text-blue-600">future</span> = () => {<br/>
+                    &nbsp;&nbsp;<span class="text-emerald-600">return</span> "Innovation";<br/>
+                    }
+                </code>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURED SECTION -->
+    <section id="featured" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 id="sect-featured" class="text-3xl font-bold mb-16 flex items-center gap-3 text-slate-900 rtl:flex-row-reverse">
+                <i data-lucide="star" class="text-brand-primary fill-current"></i> 
+                Signature Projects
+            </h2>
+            <div id="featured-container" class="space-y-24">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCADE SECTION -->
+    <section id="arcade" class="py-24 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 id="sect-arcade" class="text-3xl font-bold mb-3 flex items-center gap-3 text-slate-900 rtl:flex-row-reverse">
+                        <i data-lucide="gamepad-2" class="text-brand-accent"></i> 
+                        The Arcade & Lab
+                    </h2>
+                    <p id="sect-arcade-desc" class="text-slate-600">Math games, productivity tools, and experimental repositories.</p>
+                </div>
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2 rtl:flex-row-reverse" id="filter-buttons">
+                    <button onclick="filterProjects('All')" id="btn-all" class="filter-btn active px-4 py-2 rounded-lg text-sm font-bold bg-slate-900 text-white transition shadow-sm">All</button>
+                    <button onclick="filterProjects('Math')" id="btn-math" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition">Math Games</button>
+                    <button onclick="filterProjects('Tools')" id="btn-tools" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition">Tools</button>
+                </div>
+            </div>
+            <div id="arcade-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            
+            <!-- PROFILE IMAGE -->
+            <div class="w-28 h-28 bg-slate-100 rounded-full mx-auto mb-8 flex items-center justify-center border-4 border-white shadow-lg overflow-hidden">
+                <img src="profile.jpg" alt="Profile" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- RESTORED: "The Teacher Who Codes" as Big Title -->
+            <h2 id="profile-title" class="text-3xl font-bold mb-2">The Teacher Who Codes</h2>
+            
+            <!-- REAL NAME as Subtitle -->
+            <p id="profile-name" class="text-emerald-600 font-bold mb-6 text-sm uppercase tracking-wide">Abd-Alrahman Gamal | EdTech Engineer</p>
+            
+            <p id="profile-bio" class="text-xl text-slate-600 mb-12 leading-relaxed font-serif rtl:font-arabic">
+                "I don't just write code; I design experiences that help people learn." <br/>
+                With a background in English & German education, I realized that technology in the classroom was often static and boring. I learned fullstack development to change that.
+            </p>
+            
+            <!-- SKILLS GRID -->
+            <div class="grid md:grid-cols-3 gap-6 text-left rtl:text-right mb-12">
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-primary transition">
+                    <i data-lucide="code" class="text-brand-primary mb-4 rtl:ml-auto"></i>
+                    <h4 id="skill-1" class="font-bold text-slate-900 mb-2">Tech Stack</h4>
+                    <p class="text-sm text-slate-600">JavaScript, React, Tailwind, Canvas API, GitHub Pages.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-primary transition">
+                    <i data-lucide="book-open" class="text-brand-primary mb-4 rtl:ml-auto"></i>
+                    <h4 id="skill-2" class="font-bold text-slate-900 mb-2">Pedagogy</h4>
+                    <p id="skill-2-desc" class="text-sm text-slate-600">Gamification, Spaced Repetition, Scaffolding, Dynamic Difficulty.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-primary transition">
+                    <i data-lucide="languages" class="text-brand-primary mb-4 rtl:ml-auto"></i>
+                    <h4 id="skill-3" class="font-bold text-slate-900 mb-2">Languages</h4>
+                    <p id="skill-3-desc" class="text-sm text-slate-600">English (Native/Fluent), German (B2/C1), JavaScript (Fluent).</p>
+                </div>
+            </div>
+
+            <!-- CONTACT BUTTONS -->
+            <div class="flex justify-center gap-4 flex-wrap">
+                <!-- UPDATED EMAIL -->
+                <a href="mailto:abdulrahmangamal007@gmail.com" id="btn-contact" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-bold hover:bg-slate-800 transition shadow-lg">
+                    <i data-lucide="mail"></i> Send Email
+                </a>
+                
+                <a href="resume.pdf" target="_blank" id="btn-cv" class="inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-300 px-8 py-4 rounded-lg font-bold hover:bg-slate-50 transition">
+                    <i data-lucide="download"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm">
+                © 2026 Abd-Alrahman Gamal. All Rights Reserved.
+            </div>
+            <div class="flex gap-6">
+                <!-- Add links if you have them, or remove the href="#" -->
+                <a href="#" class="hover:text-white transition"><i data-lucide="github"></i></a>
+                <a href="#" class="hover:text-white transition"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white hover:text-brand-primary transition p-2">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="modal-img" src="" alt="Full View" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-slate-800" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. STATE & TRANSLATIONS ---
+        let currentLang = 'en';
+
+        const i18n = {
+            en: {
+                nav_work: "Signature Work",
+                nav_arcade: "The Arcade",
+                nav_about: "About & CV",
+                hero_badge: "Teacher & Fullstack Developer",
+                hero_title: "Bridging Pedagogy <br/> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent'>& Technology.</span>",
+                hero_desc: "I build gamified learning platforms, interactive stories, and educational tools that solve real classroom problems.",
+                hero_btn_1: "View Portfolio",
+                hero_btn_2: "View CV",
+                sect_featured: "Signature Projects",
+                sect_arcade: "The Arcade & Lab",
+                sect_arcade_desc: "Math games, productivity tools, and experimental repositories.",
+                btn_all: "All",
+                btn_math: "Math Games",
+                btn_tools: "Tools",
+                profile_title: "The Teacher Who Codes",
+                profile_name: "Abd-Alrahman Gamal | EdTech Engineer",
+                profile_bio: "\"I don't just write code; I design experiences that help people learn.\" <br/> With a background in English & German education, I realized that technology in the classroom was often static and boring. I learned fullstack development to change that.",
+                skill_1: "Tech Stack",
+                skill_2: "Pedagogy",
+                skill_2_desc: "Gamification, Spaced Repetition, Scaffolding, Dynamic Difficulty.",
+                skill_3: "Languages",
+                skill_3_desc: "English (Native/Fluent), German (B2/C1), JavaScript (Fluent).",
+                btn_contact: "Send Email",
+                btn_cv: "Download CV",
+                btn_launch: "Launch Project"
+            },
+            ar: {
+                nav_work: "أعمال مميزة",
+                nav_arcade: "المختبر",
+                nav_about: "نبذة عني",
+                hero_badge: "مطور برمجيات تعليمية & معلم",
+                hero_title: "دمج التعليم <br/> <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent'>مع التكنولوجيا.</span>",
+                hero_desc: "أقوم ببناء منصات تعليمية تعتمد على التلعيب، وقصص تفاعلية، وأدوات تحل مشاكل الفصول الدراسية الحقيقية.",
+                hero_btn_1: "تصفح المشاريع",
+                hero_btn_2: "السيرة الذاتية",
+                sect_featured: "أبرز المشاريع",
+                sect_arcade: "الألعاب والتجارب",
+                sect_arcade_desc: "ألعاب رياضيات، أدوات إنتاجية، ومشاريع تجريبية.",
+                btn_all: "الكل",
+                btn_math: "ألعاب الحساب",
+                btn_tools: "أدوات",
+                profile_title: "المعلم المبرمج",
+                profile_name: "عبد الرحمن جمال | مهندس تقنيات تعليم",
+                profile_bio: "\"أنا لا أكتب أكواداً فقط؛ أنا أصمم تجارب تساعد الناس على التعلم.\" <br/> بفضل خلفيتي في تدريس اللغات الإنجليزية والألمانية، أدركت أن التكنولوجيا في الفصول الدراسية غالباً ما تكون مملة. تعلمت البرمجة لتغيير ذلك.",
+                skill_1: "التقنيات",
+                skill_2: "طرق التدريس",
+                skill_2_desc: "التلعيب، التكرار المتباعد، السقالات التعليمية، الصعوبة الديناميكية.",
+                skill_3: "اللغات",
+                skill_3_desc: "الإنجليزية (لغة أم)، الألمانية (متقدم)، جافا سكريبت (طلاقة).",
+                btn_contact: "أرسل بريداً",
+                btn_cv: "تحميل السيرة الذاتية",
+                btn_launch: "تشغيل المشروع"
+            }
+        };
+
+        const featuredData = [
+            {
+                title: "A.G - PLDE",
+                title_ar: "محرك اللغة PLDE",
+                category: "Linguistics & Logic",
+                category_ar: "لغويات ومنطق",
+                // RESTORED LONG DESCRIPTION
+                desc: "A brutalist language reflex engine. It rejects 'gamification' (no streaks/coins) in favor of high-pressure muscle memory training. Features a strict 5-phase procedural loop, latency checks, and cumulative decay locking.",
+                // UPDATED LONG ARABIC DESCRIPTION
+                desc_ar: "محرك لغوي صارم يعتمد على 'الوحشية البرمجية'. يرفض مبدأ 'التلعيب' التقليدي (لا نقاط أو مكافآت) لصالح تدريب الذاكرة العضلية تحت ضغط عالٍ. يتميز بحلقة إجرائية صارمة من 5 مراحل، وفحص زمن الاستجابة، ونظام إغلاق تراكمي.",
+                tags: ["Strict Logic", "Muscle Memory"],
+                link: "https://natevskira-wq.github.io/A.G-PLDE/",
+                image: "plde.jpg" 
+            },
+            {
+                title: "The Story Hub",
+                title_ar: "منصة القصص",
+                category: "Interactive Literacy",
+                category_ar: "قراءة تفاعلية",
+                // RESTORED LONG DESCRIPTION & REMOVED 5TH GRADE
+                desc: "A dynamic reading platform that transforms static stories into interactive learning journeys. It creates a bridge between passive reading and active comprehension, designed to engage students with adaptive narratives.",
+                // UPDATED ARABIC DESCRIPTION
+                desc_ar: "منصة قراءة ديناميكية تحول القصص الثابتة إلى رحلات تعليمية تفاعلية. تخلق جسراً بين القراءة السلبية والفهم النشط، ومصممة لجذب الطلاب من خلال سياق قصصي متكيف.",
+                tags: ["Storytelling", "Dynamic Content"],
+                link: "https://natevskira-wq.github.io/5th-grade/",
+                image: "story.jpg"
+            },
+            {
+                title: "Dungeon Speller RPG",
+                title_ar: "لعبة تهجئة الآر بي جي",
+                category: "GameDev & EdTech",
+                category_ar: "تطوير ألعاب",
+                // RESTORED LONG DESCRIPTION
+                desc: "A full turn-based Role-Playing Game where vocabulary mastery fuels combat. It transforms rote memorization into a survival mechanic. Features inventory systems, enemy logic, and an engine adaptable to any curriculum level.",
+                // UPDATED ARABIC DESCRIPTION
+                desc_ar: "لعبة تعاقب أدوار (RPG) كاملة حيث تحدد مهارة المفردات نتيجة المعركة. تحول الحفظ الروتيني إلى آلية للبقاء. تتميز بأنظمة المخزون، ومنطق الأعداء، ومحرك قابل للتكيف مع أي مستوى دراسي.",
+                tags: ["Canvas API", "RPG Mechanics"],
+                link: "https://natevskira-wq.github.io/Dungeon-speller-6thgrade-unit-4-lesson-2/",
+                image: "dungeon.jpg"
+            }
+        ];
+
+        const arcadeData = [
+            { title: "Happy Frog Math", title_ar: "الضفدع السعيد", cat: "Math", link: "https://natevskira-wq.github.io/happy-frog-elementary-math-/", desc: "Elementary math gamification.", desc_ar: "لعبة رياضيات للمرحلة الابتدائية." },
+            { title: "The Vault Challenge", title_ar: "تحدي الخزنة", cat: "Math", link: "https://natevskira-wq.github.io/the-vault-math-challenge/", desc: "High-stakes arithmetic puzzles.", desc_ar: "ألغاز حسابية عالية السرعة." },
+            { title: "Factorize Escape", title_ar: "الهروب بالتحليل", cat: "Math", link: "https://natevskira-wq.github.io/Factorize-Escape/", desc: "Escape room mechanics with math.", desc_ar: "غرفة هروب تعتمد على الرياضيات." },
+            { title: "Math Universe", title_ar: "كون الرياضيات", cat: "Math", link: "https://natevskira-wq.github.io/Mathuniverse.EDU.MADE.FUN/", desc: "Fun educational portal.", desc_ar: "بوابة تعليمية ممتعة." },
+            { title: "Life Planner", title_ar: "مخطط الحياة", cat: "Tools", link: "https://natevskira-wq.github.io/Life-planner-/", desc: "Daily goal tracking system.", desc_ar: "نظام تتبع الأهداف اليومية." },
+            { title: "Strategy Pro", title_ar: "مدرب المقابلات", cat: "Tools", link: "https://natevskira-wq.github.io/Strategy-Pro-Interview-Trainer/", desc: "Interview simulation tool.", desc_ar: "أداة محاكاة مقابلات العمل." },
+            { title: "Pattern Sys", title_ar: "تتبع الأنماط", cat: "Tools", link: "https://natevskira-wq.github.io/the-pattern-conditioning-framework-tracking-system/", desc: "Behavioral tracking framework.", desc_ar: "إطار لتتبع السلوكيات." },
+        ];
+
+        // --- 2. SWITCH LOGIC ---
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            updateDOM();
+        }
+
+        function updateDOM() {
+            const isAr = currentLang === 'ar';
+            const text = i18n[currentLang];
+
+            // 1. Direction & Fonts
+            document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+            document.body.style.fontFamily = isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif";
+            document.getElementById('lang-btn-text').innerText = isAr ? 'English' : 'العربية';
+
+            // 2. Static Text Replacement
+            document.getElementById('nav-work').innerText = text.nav_work;
+            document.getElementById('nav-arcade').innerText = text.nav_arcade;
+            document.getElementById('nav-about').innerText = text.nav_about;
+            document.getElementById('mob-work').innerText = text.nav_work;
+            document.getElementById('mob-arcade').innerText = text.nav_arcade;
+            document.getElementById('mob-about').innerText = text.nav_about;
+            
+            document.getElementById('hero-badge').innerHTML = `<i data-lucide="graduation-cap" size="14"></i> ${text.hero_badge}`;
+            document.getElementById('hero-title').innerHTML = text.hero_title;
+            document.getElementById('hero-desc').innerHTML = text.hero_desc;
+            document.getElementById('hero-btn-1').innerHTML = `${text.hero_btn_1} <i data-lucide="arrow-down" size="18"></i>`;
+            document.getElementById('hero-btn-2').innerHTML = `<i data-lucide="file-text" size="18"></i> ${text.hero_btn_2}`;
+            
+            document.getElementById('sect-featured').innerHTML = `<i data-lucide="star" class="text-brand-primary fill-current"></i> ${text.sect_featured}`;
+            document.getElementById('sect-arcade').innerHTML = `<i data-lucide="gamepad-2" class="text-brand-accent"></i> ${text.sect_arcade}`;
+            document.getElementById('sect-arcade-desc').innerText = text.sect_arcade_desc;
+            
+            document.getElementById('btn-all').innerText = text.btn_all;
+            document.getElementById('btn-math').innerText = text.btn_math;
+            document.getElementById('btn-tools').innerText = text.btn_tools;
+            
+            document.getElementById('profile-title').innerText = text.profile_title;
+            document.getElementById('profile-name').innerText = text.profile_name;
+            document.getElementById('profile-bio').innerHTML = text.profile_bio;
+            document.getElementById('skill-1').innerText = text.skill_1;
+            document.getElementById('skill-2').innerText = text.skill_2;
+            document.getElementById('skill-2-desc').innerText = text.skill_2_desc;
+            document.getElementById('skill-3').innerText = text.skill_3;
+            document.getElementById('skill-3-desc').innerText = text.skill_3_desc;
+            
+            document.getElementById('btn-contact').innerHTML = `<i data-lucide="mail"></i> ${text.btn_contact}`;
+            document.getElementById('btn-cv').innerHTML = `<i data-lucide="download"></i> ${text.btn_cv}`;
+
+            // 3. Re-Render Grids
+            renderFeatured();
+            renderArcade('All');
+            lucide.createIcons();
+        }
+
+        // --- 3. RENDER FUNCTIONS ---
+        function renderFeatured() {
+            const container = document.getElementById('featured-container');
+            container.innerHTML = '';
+            
+            featuredData.forEach((project, index) => {
+                const isAr = currentLang === 'ar';
+                // Logic: In LTR, alternate. In RTL, standard flex row (reversed by dir=rtl)
+                let dirClass = index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row';
+                
+                const title = isAr ? project.title_ar : project.title;
+                const desc = isAr ? project.desc_ar : project.desc;
+                const cat = isAr ? project.category_ar : project.category;
+                const btnText = i18n[currentLang].btn_launch;
+
+                const html = `
+                    <div class="flex flex-col ${dirClass} gap-12 items-center group">
+                        <div class="w-full md:w-1/2 aspect-video bg-slate-50 rounded-2xl overflow-hidden shadow-lg border border-slate-200 relative hover:shadow-2xl transition duration-500">
+                            <img src="${project.image}" onclick="openModal('${project.image}')" class="w-full h-full object-contain p-1 cursor-zoom-in transform group-hover:scale-[1.02] transition duration-500">
+                            <div class="absolute bottom-4 right-4 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition pointer-events-none"><i data-lucide="maximize-2" class="w-5 h-5"></i></div>
+                        </div>
+                        <div class="w-full md:w-1/2 text-left rtl:text-right">
+                            <span class="text-sm font-bold uppercase tracking-wider text-brand-primary mb-3 block">${cat}</span>
+                            <h3 class="text-4xl font-bold mb-4 text-slate-900 group-hover:text-brand-primary transition">${title}</h3>
+                            <p class="text-lg text-slate-600 mb-6 leading-relaxed font-serif rtl:font-arabic">${desc}</p>
+                            <div class="flex gap-2 mb-8">
+                                ${project.tags.map(tag => `<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold border border-slate-200">${tag}</span>`).join('')}
+                            </div>
+                            <a href="${project.link}" target="_blank" class="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-brand-primary transition border-b-2 border-transparent hover:border-brand-primary pb-1">
+                                ${btnText} <i data-lucide="external-link" size="16"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function renderArcade(filterType) {
+            const grid = document.getElementById('arcade-grid');
+            grid.innerHTML = ''; 
+            const filtered = filterType === 'All' ? arcadeData : arcadeData.filter(p => p.cat === filterType);
+            const isAr = currentLang === 'ar';
+
+            filtered.forEach(project => {
+                const icon = project.cat === 'Math' ? 'calculator' : 'layout';
+                const title = isAr ? project.title_ar : project.title;
+                const desc = isAr ? project.desc_ar : project.desc;
+
+                const html = `
+                    <a href="${project.link}" target="_blank" class="project-card group bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-primary block h-full text-left rtl:text-right">
+                        <div class="flex justify-between items-start mb-4 rtl:flex-row-reverse">
+                            <div class="p-3 rounded-lg bg-slate-50 text-slate-700 group-hover:bg-brand-primary group-hover:text-white transition"><i data-lucide="${icon}" size="20"></i></div>
+                            <i data-lucide="arrow-up-right" class="text-slate-300 group-hover:text-brand-primary transition rtl:rotate-180" size="18"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-primary transition font-sans rtl:font-arabic">${title}</h3>
+                        <p class="text-slate-600 text-sm mb-4 line-clamp-2 font-sans rtl:font-arabic">${desc}</p>
+                        <span class="text-xs font-semibold text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-100">${project.cat}</span>
+                    </a>
+                `;
+                grid.innerHTML += html;
+            });
+            lucide.createIcons();
+        }
+
+        function filterProjects(type) {
+            renderArcade(type);
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isActive = (type === 'All' && (btn.id === 'btn-all')) || btn.id.includes(type.toLowerCase()); 
+                 if(isActive) { btn.classList.remove('bg-white', 'text-slate-600'); btn.classList.add('bg-slate-900', 'text-white'); }
+                 else { btn.classList.add('bg-white', 'text-slate-600'); btn.classList.remove('bg-slate-900', 'text-white'); }
+            });
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        function openModal(src) { modalImg.src = src; modal.classList.remove('hidden'); }
+        function closeModal() { modal.classList.add('hidden'); setTimeout(() => modalImg.src='', 300); }
+        document.addEventListener('keydown', e => { if(e.key === "Escape") closeModal(); });
+
+        // Initialize
+        updateDOM();
+    </script>
+</body>
+</html>
