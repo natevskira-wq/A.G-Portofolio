@@ -219,10 +219,10 @@
 
             <!-- CONTACT BUTTONS -->
             <div class="flex justify-center gap-4 flex-wrap">
-                <!-- UPDATED EMAIL -->
-                <a href="mailto:abdulrahmangamal007@gmail.com" id="btn-contact" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-bold hover:bg-slate-800 transition shadow-lg">
+                <!-- NEW MODAL TRIGGER BUTTON -->
+                <button onclick="openContactModal()" id="btn-contact" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-lg font-bold hover:bg-slate-800 transition shadow-lg">
                     <i data-lucide="mail"></i> Send Email
-                </a>
+                </button>
                 
                 <a href="resume.pdf" target="_blank" id="btn-cv" class="inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-300 px-8 py-4 rounded-lg font-bold hover:bg-slate-50 transition">
                     <i data-lucide="download"></i> Download CV
@@ -245,12 +245,72 @@
         </div>
     </footer>
 
-    <!-- LIGHTBOX MODAL -->
+    <!-- LIGHTBOX MODAL (IMAGES) -->
     <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeModal()">
         <button class="absolute top-6 right-6 text-white hover:text-brand-primary transition p-2">
             <i data-lucide="x" class="w-10 h-10"></i>
         </button>
         <img id="modal-img" src="" alt="Full View" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl border border-slate-800" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- CONTACT MODAL (ESTABLISH CONNECTION THEME) -->
+    <div id="contact-modal" class="fixed inset-0 z-[110] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeContactModal()">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md overflow-hidden border border-slate-700 font-mono" onclick="event.stopPropagation()">
+            
+            <!-- Terminal Header -->
+            <div class="bg-slate-900 p-5 border-b border-slate-700 flex justify-between items-start text-left" dir="ltr">
+                <div>
+                    <div class="flex items-center gap-2 text-emerald-400 mb-1">
+                        <i data-lucide="terminal" class="w-5 h-5"></i>
+                        <span class="font-bold tracking-wider text-sm">ESTABLISH_CONNECTION</span>
+                    </div>
+                    <div class="text-xs text-slate-400 space-y-1">
+                        <p>Status: <span class="text-emerald-400">200 OK</span></p>
+                        <p>Latency: <span class="text-emerald-400">Low</span> | Packet Loss: <span class="text-emerald-400">0%</span></p>
+                    </div>
+                </div>
+                <button onclick="closeContactModal()" class="text-slate-500 hover:text-white transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Body Content -->
+            <div class="p-6 bg-slate-50 space-y-4" dir="ltr">
+                <!-- Email Row -->
+                <div class="group relative bg-white border border-slate-200 rounded p-4 shadow-sm hover:border-blue-500 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 bg-blue-50 text-blue-600 rounded"><i data-lucide="mail"></i></div>
+                        <div class="flex-1 overflow-hidden text-left">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">GET /EMAIL</p>
+                            <p class="text-slate-800 font-bold text-sm truncate">abdulrahmangamal007@gmail.com</p>
+                        </div>
+                        <button onclick="copyToClipboard('abdulrahmangamal007@gmail.com', this)" class="bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-600 p-2 rounded transition-all active:scale-95">
+                            <i data-lucide="copy" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <div class="copy-feedback hidden absolute right-2 -top-3 bg-emerald-500 text-white text-[10px] px-2 py-0.5 rounded shadow-sm font-bold">Data Packet Retrieved</div>
+                </div>
+
+                <!-- Phone Row -->
+                <div class="group relative bg-white border border-slate-200 rounded p-4 shadow-sm hover:border-blue-500 transition-colors duration-200">
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 bg-blue-50 text-blue-600 rounded"><i data-lucide="phone"></i></div>
+                        <div class="flex-1 text-left">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">GET /PHONE</p>
+                            <p class="text-slate-800 font-bold text-sm">01001395058</p>
+                        </div>
+                        <button onclick="copyToClipboard('01001395058', this)" class="bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-600 p-2 rounded transition-all active:scale-95">
+                            <i data-lucide="copy" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <div class="copy-feedback hidden absolute right-2 -top-3 bg-emerald-500 text-white text-[10px] px-2 py-0.5 rounded shadow-sm font-bold">Data Packet Retrieved</div>
+                </div>
+            </div>
+            
+            <div class="bg-slate-100 p-3 text-center border-t border-slate-200">
+                <code class="text-[10px] text-slate-400">System Ready... Waiting for input...</code>
+            </div>
+        </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -502,6 +562,29 @@
         function openModal(src) { modalImg.src = src; modal.classList.remove('hidden'); }
         function closeModal() { modal.classList.add('hidden'); setTimeout(() => modalImg.src='', 300); }
         document.addEventListener('keydown', e => { if(e.key === "Escape") closeModal(); });
+
+        // --- DEV CONTACT MODAL LOGIC ---
+        const contactModal = document.getElementById('contact-modal');
+        function openContactModal() { contactModal.classList.remove('hidden'); lucide.createIcons(); }
+        function closeContactModal() { contactModal.classList.add('hidden'); }
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalIcon = btnElement.innerHTML;
+                btnElement.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-blue-600');
+                btnElement.classList.add('bg-emerald-500', 'text-white');
+                btnElement.innerHTML = `<i data-lucide="check" class="w-5 h-5"></i>`;
+                lucide.createIcons();
+                const feedbackLabel = btnElement.parentElement.parentElement.querySelector('.copy-feedback');
+                feedbackLabel.classList.remove('hidden');
+                setTimeout(() => {
+                    btnElement.innerHTML = `<i data-lucide="copy" class="w-5 h-5"></i>`;
+                    btnElement.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-blue-600');
+                    btnElement.classList.remove('bg-emerald-500', 'text-white');
+                    feedbackLabel.classList.add('hidden');
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
 
         // Initialize
         updateDOM();
